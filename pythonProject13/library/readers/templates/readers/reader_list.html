@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+   <h1>Список читателей</h1>
+   <table>
+       <tr>
+           <th>Имя</th>
+           <th>Фамилия</th>
+           <th>Вебсайт</th>
+
+       </tr>
+       {% for reader in readers %}
+       <tr>
+           <td>{{ reader.first_name }}</td>
+           <td>{{ reader.last_name }}</td>
+           <td>{{ reader.email }}</td>
+
+           <td>
+               <a href="{% url 'reader_edit' reader.id %}">Изменить</a>
+               <a href="{% url 'reader_delete' reader.id %}">Удалить</a>
+           </td>
+       </tr>
+       {% endfor %}
+   </table>
+   <a href="{% url 'reader_add' %}">Добавить нового читателя</a><br>
+    <a href="{% url 'index' %}">Назад</a>
+</body>
+</html>
